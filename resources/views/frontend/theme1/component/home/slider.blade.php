@@ -16,12 +16,12 @@
             'classname' => ''
         ],
 
-        (object) [
-            'title' => 'Supply chain and logistics',
-            'content' => "Seamless movement of goods through smart, efficient logistics solutions.",
-            'image' => asset('assets/img/sliders/chain.jpg'),
-            'classname' => ''
-        ],
+        // (object) [
+        //     'title' => 'Supply chain and logistics',
+        //     'content' => "Seamless movement of goods through smart, efficient logistics solutions.",
+        //     'image' => asset('assets/img/sliders/chain.jpg'),
+        //     'classname' => ''
+        // ],
 
 
         (object) [
