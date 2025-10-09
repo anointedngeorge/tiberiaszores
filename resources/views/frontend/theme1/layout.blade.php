@@ -98,7 +98,7 @@
 
 
     <!-- Topbar Start -->
-    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+    <div class="container-fluid bg-red px-5 d-none d-lg-block">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
@@ -137,7 +137,7 @@
             <div class="row gx-5">
                 <div class="col-lg-4 col-md-6 footer-about">
                     <div
-                        class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
+                        class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-red p-4">
                         <a href="{{ route('frontend.index') }}" class="navbar-brand">
                             <img src="{{ asset(config('data.logo')) }}" />   
                             <h1 class="m-0 text-white">

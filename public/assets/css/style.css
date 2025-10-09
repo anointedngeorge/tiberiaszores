@@ -490,3 +490,31 @@ h6,
         margin-bottom: -75px;
     }
 }
+
+
+
+.bg-red {
+    background-color: #990029;
+}
+
+.bg-blue-light {
+    background-color: #224e8c;
+}
+
+.bg-blue-dark {
+    background-color: #081d3d;
+}
+
+
+
+.text-red {
+    color: #990029;
+}
+
+.text-blue-light {
+    color: #224e8c;
+}
+
+.text-blue-dark {
+    color: #081d3d;
+}

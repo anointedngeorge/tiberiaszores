@@ -3,7 +3,7 @@
         <div class="row g-5">
             <div class="col-lg-7">
                 <div class="section-title position-relative pb-3 mb-5">
-                    <h5 class="fw-bold text-primary text-uppercase">About Us</h5>
+                    <h5 class="fw-bold text-red text-uppercase">About Us</h5>
                     <h1 class="mb-0">TiberiasZores Group</h1>
                 </div>
                 <p class="mb-4">
@@ -40,7 +40,7 @@
                     it safely and sustainably.
                 </p>
 
-                <a href="{{ route('frontend.index', ['q' => 'about']) }}" class="btn btn-dark py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Continue
+                <a href="{{ route('frontend.index', ['q' => 'about']) }}" class="btn bg-red text-white py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Continue
                     Reading...</a>
             </div>
             <div class="col-lg-5" style="min-height: 500px;">
