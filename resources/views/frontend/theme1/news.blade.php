@@ -10,7 +10,7 @@
     <div class="container">
         <!-- Section Header -->
         <div class="section-title text-center mb-5">
-            <h2 class="title">Activities</h2>
+            <h2 class="title text-red">Activities</h2>
             <p class="subtitle">Stay updated on our latest developments across Africa’s industrial and energy sectors.</p>
         </div>
 
@@ -24,7 +24,7 @@
                         <img src="{{ asset('assets/img/services/gabon.jpg') }}" alt="Gabon Refinery Initiative" class="img-fluid rounded-top">
                     </div>
                     <div class="news-content p-4">
-                        <h4 class="news-title">Industrialist Backs Gabon's Refinery Initiatives</h4>
+                        <h4 class="news-title text-red">Industrialist Backs Gabon's Refinery Initiatives</h4>
                         <p class="news-meta mb-2"><i class="fa fa-map-marker-alt"></i> Port-Gentil, Gabon</p>
                         <p class="news-text">
                             Industrialist and President of <strong>TiberiasZores Group</strong>, <strong>Roland Soures</strong>, 
@@ -49,7 +49,7 @@
                         <img src="{{ asset('assets/img/services/congo.jpg') }}" alt="Congo Refinery Expansion" class="img-fluid rounded-top">
                     </div>
                     <div class="news-content p-4">
-                        <h4 class="news-title">Congo Brazzaville Advances Refinery Expansion Programs</h4>
+                        <h4 class="news-title text-red">Congo Brazzaville Advances Refinery Expansion Programs</h4>
                         <p class="news-meta mb-2"><i class="fa fa-map-marker-alt"></i> Pointe-Noire, Congo Brazzaville</p>
                         <p class="news-text">
                             The <strong>Société Nationale des Pétroles du Congo (SNPC)</strong> is inviting private and international 

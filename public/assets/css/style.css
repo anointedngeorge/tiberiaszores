@@ -505,6 +505,11 @@ h6,
     background-color: #081d3d;
 }
 
+.bg-blue-red {
+    background: #08133D;
+    background: linear-gradient(176deg, rgba(8, 19, 61, 1) 47%,rgba(153, 0, 44, 0.84) 100%)
+}
+
 
 
 .text-red {
@@ -517,4 +522,8 @@ h6,
 
 .text-blue-dark {
     color: #081d3d;
+}
+
+.text-white {
+    color: #FFFFFF !important;
 }

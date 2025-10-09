@@ -1,11 +1,29 @@
 @php
     $sliders = [
+
+        (object) [
+            'title' => 'Civil Engineering and Construction',
+            'content' => "Building sustainable infrastructure that drives development.",
+            'image' => asset('assets/img/services/civil.webp'),
+            'classname' => 'active'
+        ],
+
+
+        (object) [
+            'title' => 'Oil and Gas',
+            'content' => "Powering industries through innovation in energy and petroleum solutions.",
+            'image' => asset(path: 'assets/img/services/oil_and_gas.jpg'),
+            'classname' => ''
+        ],
+
         (object) [
             'title' => 'Supply chain and logistics',
             'content' => "Seamless movement of goods through smart, efficient logistics solutions.",
             'image' => asset('assets/img/sliders/chain.jpg'),
-            'classname' => 'active'
+            'classname' => ''
         ],
+
+
         (object) [
             'title' => 'Port Operations',
             'content' => "Efficient port management ensuring smooth global trade flow.",
