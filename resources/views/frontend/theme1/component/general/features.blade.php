@@ -65,7 +65,7 @@
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                 <div class="blog-item bg-light rounded overflow-hidden">
                     <div class="blog-img position-relative overflow-hidden">
-                        <a href="">
+                        <a href="#">
                              <img class="img-fluid" style="width: 1005; height: 280px;" src="{{ $service->image }}" alt="{{ $service->title }}">
                         </a>
                     </div>
