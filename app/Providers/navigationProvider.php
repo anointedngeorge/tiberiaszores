@@ -29,36 +29,22 @@ class navigationProvider extends ServiceProvider
                     'show_on_header' => true,
                     'active_check'   => fn() => request()->is('/') && request()->uri() == '',
                 ],
-                // [
-                //     'title' => 'About',
-                //     'url'   => route('frontend.index', ['q' => 'about']),
-                //     'show_on_footer' => true,
-                //     'show_on_header' => true,
-                //     'active_check'   => fn() => request()->query('q') === 'about',
-                // ],
                 [
-                    'title' => 'Events',
-                    'url'   => route('frontend.index', ['q' => 'events']),
+                    'title' => 'About',
+                    'url'   => route('frontend.index', ['q' => 'about']),
                     'show_on_footer' => true,
                     'show_on_header' => true,
-                    'active_check'   => fn() => request()->query('q') === 'events',
+                    'active_check'   => fn() => request()->query('q') === 'about',
                 ],
+         
                 [
-                    'title' => 'Volunteer',
-                    'url'   => route('frontend.index', ['q' => 'volunteer']),
+                    'title' => 'Activities',
+                    'url'   => route('frontend.index', ['q' => 'news']),
                     'show_on_footer' => true,
                     'show_on_header' => true,
-                    'active_check'   => fn() => request()->query('q') === 'volunteer',
+                    'active_check'   => fn() => request()->query('q') === 'news',
                 ],
-                [
-                    'title' => 'Partnership',
-                    'url'   => route('frontend.index', ['q' => 'partnership']),
-                    'show_on_footer' => true,
-                    'show_on_header' => true,
-                    'active_check'   => fn() => request()->query('q') === 'partnership',
-                ],
-
-                
+        
                 [
                     'title' => 'Contact',
                     'url'   => route('frontend.index', ['q' => 'contact']),
@@ -77,7 +63,6 @@ class navigationProvider extends ServiceProvider
                     'current'        => call_user_func($page['active_check']),
                 ];
             });
-            
             $view->with('navigationProvider', $navigationProvider);
         });
     }

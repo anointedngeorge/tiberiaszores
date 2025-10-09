@@ -156,14 +156,16 @@
                 </div>
                 <div class="col-lg-8 col-md-6">
                     <div class="row gx-5">
-                        <div class="col-lg-6 col-md-12 pt-5 mb-5">
+                        <div class="col-lg-4 col-md-12 pt-5 mb-5">
                             <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                <h3 class="text-light mb-0">Get In Touch</h3>
+                                <h3 class="text-light mb-0">AZORES OFFICE</h3>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-geo-alt text-primary me-2"></i>
                                 <p class="mb-0">{{ config('data.address') }}</p>
                             </div>
+                            
+
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-primary me-2"></i>
                                 <p class="mb-0">{{ config('data.email') }}</p>
@@ -181,23 +183,46 @@
                                         class="fab fa-linkedin-in fw-normal"></i></a>
                             </div> --}}
                         </div>
-                        <div class="col-lg-6 col-md-12 pt-0 pt-lg-5 mb-5">
+
+                        <div class="col-lg-4 col-md-12 pt-5 mb-5">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">ITALY OFFICE</h3>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <p class="mb-0">{{ config('data.address2') }}</p>
+                            </div>
+                            
+
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-envelope-open text-primary me-2"></i>
+                                <p class="mb-0">{{ config('data.email2') }}</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-telephone text-primary me-2"></i>
+                                <p class="mb-0">{{ config('data.phone2') }}</p>
+                            </div>
+                            {{-- <div class="d-flex mt-4">
+                                <a class="btn btn-primary btn-square me-2" href="#"><i
+                                        class="fab fa-twitter fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="#"><i
+                                        class="fab fa-facebook-f fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="#"><i
+                                        class="fab fa-linkedin-in fw-normal"></i></a>
+                            </div> --}}
+                        </div>
+
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
                             <div class="section-title section-title-sm position-relative pb-3 mb-4">
                                 <h3 class="text-light mb-0">Quick Links</h3>
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
-                                <a class="text-light mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                                <a class="text-light mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                                <a class="text-light mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                                <a class="text-light mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                                <a class="text-light mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                                <a class="text-light" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                                 @foreach ($navigationProvider as $link)
+                                    <a class="text-light mb-2" href="{{ $link->url ?? '#' }}"><i
+                                        class="bi bi-arrow-right text-primary me-2"></i>{{ $link->title }}</a>
+                                 @endforeach
+                                
+                            
                             </div>
                         </div>
 
