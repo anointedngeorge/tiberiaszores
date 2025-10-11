@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\ContentsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\MediaController;
@@ -29,6 +30,12 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::resource('/partners', PartnershipController::class);
     Route::resource('/media', MediaController::class);
     Route::resource('/setting', SettingsController::class);
+    
+    // 
+    Route::get('/content/{type_name}/{page_title}/{page_name}', action: [ContentsController::class, 'index'])->name('content.index');
+    Route::post('/content/{type_name}/{page_name}', [ContentsController::class, 'store'])->name('content.store');
+
+
     Route::resource('/contacts', ContactsController::class);
 
     // 

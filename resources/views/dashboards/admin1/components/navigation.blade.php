@@ -7,39 +7,16 @@ $links = [
         "name" => "Dashboard",
         "has_children" => false,
         "children" => [
-            // (object) [
-            //     "name" => "hi",
-            //     "href" => "/"
-            // ]
+            (object) [
+                "name" => "hi",
+                "href" => "/",
+                'param' => []
+            ]
         ],
         "href" => "dashboard",
+        'param' => []
     ],
 
-    (object) [
-        "icon" => "flaticon-381-user",
-        "name" => "Volunteers",
-        "has_children" => false,
-        "children" => [
-            (object) [
-                "name" => "hi",
-                "href" => "/"
-            ]
-        ],
-        "href" => "volunteer.index",
-    ],
-
-    (object) [
-        "icon" => "flaticon-381-user",
-        "name" => "Partnership",
-        "has_children" => false,
-        "children" => [
-            (object) [
-                "name" => "hi",
-                "href" => "/"
-            ]
-        ],
-        "href" => "partners.index",
-    ],
 
     (object) [
         "icon" => "flaticon-381-user",
@@ -48,36 +25,12 @@ $links = [
         "children" => [
             (object) [
                 "name" => "hi",
-                "href" => "/"
+                "href" => "/",
+                'param' => []
             ]
         ],
         "href" => "blog.index",
-    ],
-
-    (object) [
-        "icon" => "flaticon-381-user",
-        "name" => "Events",
-        "has_children" => false,
-        "children" => [
-            (object) [
-                "name" => "hi",
-                "href" => "/"
-            ]
-        ],
-        "href" => "events.index",
-    ],
-
-    (object) [
-        "icon" => "flaticon-381-user",
-        "name" => "Contacts",
-        "has_children" => false,
-        "children" => [
-            (object) [
-                "name" => "hi",
-                "href" => "/"
-            ]
-        ],
-        "href" => "contacts.index",
+        'param' => []
     ],
 
 
@@ -88,53 +41,53 @@ $links = [
         "children" => [
             (object) [
                 "name" => "hi",
-                "href" => "/"
+                "href" => "/",
+                'param' => []
             ]
         ],
         "href" => "media.index",
+        'param' => []
     ],
 
-    // (object)[
-    //     "icon" => "flaticon-381-wifi-2",
-    //     "name" => "Hotel",
-    //     "has_children" => true,
-    //     "children" => [
-    //         (object) [
-    //             "name" => "Rooms",
-    //             "href" => "room.index"
-    //         ]
-
-    //     ],
-    //     "href" => "dashboard",
-    // ],
-
-
-
-    // (object)[
-    //     "icon" => "flaticon-381-user",
-    //     "name" => "Frontend",
-    //     "has_children" => true,
-    //     "children" => [
-    //         (object) [
-    //             "name" => "HomePage",
-    //             "href" => null
-    //         ],
-
-    //     ],
-    //     "href" => null,
-    // ],
+    (object) [
+        "icon" => "flaticon-381-settings",
+        "name" => "Frontend",
+        "has_children" => true,
+        "children" => [
+            (object) [
+                "name" => "Slider",
+                "href" => "content.index",
+                'param' => ['type_name'=> 'sliders', 'page_title'=>"Sliders Settings", 'page_name'=>"frontend"]
+            ],
+            (object) [
+                "name" => "Services",
+                "href" => "content.index",
+                'param' => ['type_name'=> 'services', 'page_title'=>"Services Section", 'page_name'=>"frontend"]
+            ],
+        ],
+        "href" => "setting.index",
+        'param' => []
+    ],
 
     (object) [
         "icon" => "flaticon-381-settings",
         "name" => "Settings",
-        "has_children" => false,
+        "has_children" => true,
         "children" => [
             (object) [
-                "name" => "hi",
-                "href" => null
-            ]
+                "name" => "Settings",
+                "href" => "setting.index",
+                'param' => []
+            ],
+            (object) [
+                "name" => "Office",
+                "href" => "content.index",
+                'param' => ['type_name'=> 'offices', 'page_title'=>"Office Settings", 'page_name'=>"settings"]
+            ],
+
         ],
-        "href" => "setting.index",
+        "href" => null,
+        'param' => []
     ],
 
 ];
@@ -149,7 +102,7 @@ $links = [
             @foreach ($links as $link)
                 <li>
                     <a class="{{ $link->has_children ? 'has-arrow' : '' }} ai-icon {{ Route::currentRouteName() === $link->href ? 'mm-active' : '' }}"
-                        href="{{ $link->has_children ? 'javascript:void(0)' : route($link->href) }}" aria-expanded="false">
+                        href="{{ $link->has_children ? 'javascript:void(0)' : route($link->href, $link->param) }}" aria-expanded="false">
                         <i class="{{ $link->icon }}"></i>
                         <span class="nav-text">{{ $link->name }}</span>
                     </a>
@@ -158,7 +111,7 @@ $links = [
                         <ul aria-expanded="false">
                             @foreach ($link->children as $child)
                                 <li>
-                                    <a href="{{ !empty($child->href) ? route($child->href) : '#' }}">
+                                    <a href="{{ !empty($child->href) ? route($child->href, $child->param) : '#' }}">
                                         {{ $child->name }}
                                     </a>
                                 </li>
