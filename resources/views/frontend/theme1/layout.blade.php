@@ -92,8 +92,6 @@
 @php
     $data = loadSingleData('offices', 'settings');
     $settings = loadSingleData('settings', 'settings');
-
-    
 @endphp
 
 <body>
