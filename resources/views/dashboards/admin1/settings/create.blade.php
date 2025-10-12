@@ -38,7 +38,11 @@
                                         <label>Choose A Logo</label>
                                         <select required name="logo" class="form-control form-control-sm">
                                             @foreach ($medias as $media)
-                                                <option value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
+                                                <option 
+                                                @if ($object->logo === 'storage/' . $media->media )
+                                                selected
+                                                @endif
+                                                value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -47,7 +51,9 @@
                                         <label>Choice A Favicon Image</label>
                                         <select required name="favicon" class="form-control form-control-sm">
                                             @foreach ($medias as $media)
-                                                <option value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
+                                                <option @if ($object->favicon === 'storage/' . $media->media )
+                                                selected
+                                                @endif value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
                                             @endforeach
                                         </select>
                                     </div>
