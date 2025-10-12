@@ -1,3 +1,8 @@
+@php
+    $data = loadSingleData('offices', 'settings');
+    $settings = loadSingleData('settings', 'settings');
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +17,11 @@
     </title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="{{ config('data.meta_keywords') }}" name="keywords">
-    <meta content="{{ config('data.footer_about') }}" name="description">
+    <meta content="{{ $settings->seo_keyword ?? config('data.meta_keywords') }}" name="keywords">
+    <meta content="{{ $settings->seo_description ?? config('data.footer_about') }}" name="description">
 
     <!-- Favicon -->
-    <link href="{{ config("data.fav") }}" rel="icon">
+    <link href="{{ asset($settings->favicon) ??  asset(config("data.fav")) }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,10 +94,6 @@
 </head>
 
 
-@php
-    $data = loadSingleData('offices', 'settings');
-    $settings = loadSingleData('settings', 'settings');
-@endphp
 
 <body>
     <!-- Spinner Start -->

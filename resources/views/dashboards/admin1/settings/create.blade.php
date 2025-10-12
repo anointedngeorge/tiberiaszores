@@ -66,9 +66,19 @@
                                     </div>
 
 
+                                    <div class="mt-2">
+                                        <label>SEO Description</label>
+                                        <textarea rows="5" placeholder="SEO Description" class="form-control form-control-sm"
+                                            name="seo_description">{{ $object->seo_description ?? ''}}</textarea>
+                                    </div>
+
+                                    <div class="mt-2">
+                                        <label>SEO Keywords</label>
+                                        <textarea rows="5" placeholder="SEO Keywords" class="form-control form-control-sm"
+                                            name="seo_keyword">{{ $object->seo_keyword ?? ''}}</textarea>
+                                    </div>
+
                                 </div>
-
-
 
 
                                 <div class="row">
