@@ -1,5 +1,8 @@
 @php
-    $sliders = [
+
+    $data = loaddata('sliders', 'frontend');
+ 
+    $sliders  = !empty($data) ? $data : [
 
         (object) [
             'title' => 'Civil Engineering and Construction',
@@ -16,13 +19,6 @@
             'classname' => ''
         ],
 
-        // (object) [
-        //     'title' => 'Supply chain and logistics',
-        //     'content' => "Seamless movement of goods through smart, efficient logistics solutions.",
-        //     'image' => asset('assets/img/sliders/chain.jpg'),
-        //     'classname' => ''
-        // ],
-
 
         (object) [
             'title' => 'Port Operations',
@@ -30,7 +26,7 @@
             'image' => asset('assets/img/sliders/port_operation.jpg'),
             'classname' => ''
         ],
-    ];
+    ] ;
 @endphp
 
 <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">

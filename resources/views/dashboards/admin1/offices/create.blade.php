@@ -25,7 +25,7 @@
                             </h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('content.store', ['type_name'=>'offices', 'page_name'=>'settings']) }}" method="post">
+                            <form action="{{ route('content.store', ['type_name'=>'settings', 'page_name'=>'offices']) }}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div>

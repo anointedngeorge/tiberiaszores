@@ -52,6 +52,8 @@
             const url = ev.dataset.page;
 
             title.textContent = page_title;
+
+            console.log(url);
             
             await fetch(url)
                 .then(response => {
@@ -62,6 +64,7 @@
                     container.innerHTML = html;
                 })
                 .catch(err => {
+                    console.log(err, "error loading");
                     container.innerHTML  = "<p>Error loading page.</p>";
                 });
 

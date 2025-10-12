@@ -15,8 +15,9 @@
                 <h1 class="mb-0">If You Have Any Query, Feel Free To Contact Us</h1>
             </div>
 
-
-          
+            @php
+                $data = loadSingleData('offices', 'settings');
+            @endphp
 
             <div class="row g-5 mb-5">
                 <div class="col-lg-4">
@@ -27,7 +28,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2 text-red">Call to ask any question</h5>
-                            <h4 class="text-blue-dark mb-0">{{ config('data.phone1') }} </h4>
+                            <h4 class="text-blue-dark mb-0">{{ $data->phone1 ?? config('data.phone1') }} </h4>
                         </div>
                     </div>
                 </div>
@@ -39,7 +40,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2 text-red">Email Address</h5>
-                            <h4 class="text-blue-dark mb-0">{{ config('data.email') }}</h4>
+                            <h4 class="text-blue-dark mb-0">{{ $data->email_address1 ?? config('data.email') }}</h4>
                         </div>
                     </div>
                 </div>
@@ -51,7 +52,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2 text-red">Azores office</h5>
-                            <h4 class="text-blue-dark mb-0">{{ config('data.address') }}</h4>
+                            <h4 class="text-blue-dark mb-0">{{ $data->address1 ?? config('data.address') }}</h4>
                         </div>
                     </div>
                 </div>
@@ -67,7 +68,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2 text-red">Call to ask any question</h5>
-                            <h4 class="text-blue-dark mb-0">{{ config('data.phone2') }} </h4>
+                            <h4 class="text-blue-dark mb-0">{{ $data->phone2 ?? config('data.phone2') }} </h4>
                         </div>
                     </div>
                 </div>
@@ -79,7 +80,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2 text-red">Email Address</h5>
-                            <h4 class="text-blue-dark mb-0">{{ config('data.email2') }}</h4>
+                            <h4 class="text-blue-dark mb-0">{{ $data->email_address2 ?? config('data.email2') }}</h4>
                         </div>
                     </div>
                 </div>
@@ -91,7 +92,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2 text-red">Italy office</h5>
-                            <h4 class="text-blue-dark mb-0">{{ config('data.address2') }}</h4>
+                            <h4 class="text-blue-dark mb-0">{{ $data->address2 ?? config('data.address2') }}</h4>
                         </div>
                     </div>
                 </div>

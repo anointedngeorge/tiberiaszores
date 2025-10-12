@@ -22,24 +22,24 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
         '/',
         [DashboardController::class, 'index']
     )->name('dashboard');
-    
 
-    Route::resource('/events', MEventsController::class);
     Route::resource('/blog', BlogsController::class);
-    Route::resource('/volunteer', VolunteersController::class);
-    Route::resource('/partners', PartnershipController::class);
     Route::resource('/media', MediaController::class);
     Route::resource('/setting', SettingsController::class);
-    
+
     // 
-    Route::get('/content/{type_name}/{page_title}/{page_name}', action: [ContentsController::class, 'index'])->name('content.index');
-    Route::post('/content/{type_name}/{page_name}', [ContentsController::class, 'store'])->name('content.store');
+    Route::prefix('content')->group(function () {
+        Route::get('view/{page_name}/{page_title}/{type_name}/{is_queryset?}', [ContentsController::class, 'index'])->name('content.index');
+        Route::get('edit/{content}/{page_name}/{page_title}', [ContentsController::class, 'edit'])->name('content.edit');
+        Route::post('store/{page_name}/{type_name}/{is_queryset?}', [ContentsController::class, 'store'])->name('content.store');
+        Route::put('update/{content}/{page_name}/{type_name}', [ContentsController::class, 'update'])->name('content.update');
+        Route::delete('delete/{content}/{page_name}/{type_name}', [ContentsController::class, 'destroy'])->name('content.delete');
+    });
 
 
     Route::resource('/contacts', ContactsController::class);
 
     // 
-    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -51,11 +51,9 @@ Route::name('frontend.')
     ->controller(FrontendController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::post('/volunteer', 'register_volunteer')->name('volunteer');
-        Route::post('/partners', 'register_partnership')->name('partners');
         Route::post('/contact', 'contacts')->name('contacts');
     });
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

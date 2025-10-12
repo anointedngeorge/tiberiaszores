@@ -1,40 +1,68 @@
-
 @php
-    function status($str) {
-        return $str ? "Active" : "Not Active";
-    }
+    $data = decode_concat_json($object->description)[0];
 @endphp
 
 
+<div class="container-fluid">
+    <div class="row">
 
-<form action="{{ route('guest.update', ['guest' => $result->id]) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    @method("PUT")
-    
-    <div class="mb-3">
-        <label>Firstname</label>
-        <input type="text" value="{{ $result->firstname }}" name="firstname" class="form-control input-default" placeholder="firstname" required>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+
+                        @if ($page_title)
+                            {{ $page_title }}
+                        @else
+                            ...
+                        @endif
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form
+                        action="{{ route('content.update', ['content' => $object->id, 'type_name' => 'frontend', 'page_name' => 'services']) }}"
+                        method="post">
+
+                        @method('put')
+                        @csrf
+                        <div class="row">
+                            <div>
+                                <label>Title</label>
+                                <input placeholder="slider title" value="{{ $data['title'] }}"
+                                    class="form-control form-control-sm" type="text" name="title">
+                            </div>
+
+
+                            <div class="mt-2">
+                                <img src="{{ asset($data['image']) }}" width="60" height="60"
+                                    style="object-fit:cover; border-radius:8px;">
+                                <br>
+                                <label>Slider Image</label>
+                                <select name="image" class="form-control form-control-sm">
+                                    @foreach ($medias as $media)
+                                        <option @if ($data['image'] === 'storage/' . $media->media) selected @endif
+                                            value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="mt-2">
+                                <label>Content</label>
+                                <textarea rows="5" placeholder="Content" class="form-control form-control-sm"
+                                    name="content">{{ $data['content'] }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="mt-3">
+                                <button class="btn btn-block btn-primary " type="submit">Update</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-    <div class="mb-3">
-        <label >Lastname </label>
-        <input type="text" value="{{ $result->lastname }}" name="lastname" class="form-control input-default" placeholder="lastname" required>
-    </div>
-
-    <div class="mb-3">
-        <label >Email Address</label>
-        <input type="email" value="{{ $result->email }}" name="email" class="form-control input-default" placeholder="support@example.com" required>
-    </div>
-
-    <div class="mb-3">
-        <label >Phone</label>
-        <input type="text" value="{{ $result->phone }}" name="phone" class="form-control input-default" placeholder="phone" required>
-    </div>
-
-    <div class="mb-3">
-        <label>Address</label>
-        <input type="text" value="{{ $result->address }}"  name="address" class="form-control input-default" placeholder="address" required>
-    </div>
-
-    <button type="submit" class="btn light btn-primary">Update</button>
-</form>
+</div>

@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-body">
                     <form
-                        action="{{ route('content.update', ['content' => $object->id, 'type_name' => 'frontend', 'page_name' => 'sliders']) }}"
+                        action="{{ route('content.update', ['content' => $object->id, 'type_name' => 'settings', 'page_name' => 'ports']) }}"
                         method="post">
 
                         @method('put')
@@ -28,22 +28,17 @@
                         <div class="row">
                             <div>
                                 <label>Title</label>
-                                <input required placeholder="slider title" value="{{ $data['title'] }}"
+                                <input placeholder="slider title" value="{{ $data['title'] }}"
                                     class="form-control form-control-sm" type="text" name="title">
                             </div>
 
-                             <div>
-                                <label>Classname</label>
-                                <input placeholder="classname" value="{{ $data['classname'] ?? '' }}"
-                                    class="form-control form-control-sm" type="text" name="classname">
-                            </div>
 
                             <div class="mt-2">
                                 <img src="{{ asset($data['image']) }}" width="60" height="60"
                                     style="object-fit:cover; border-radius:8px;">
                                 <br>
                                 <label>Slider Image</label>
-                                <select required name="image" class="form-control form-control-sm">
+                                <select name="image" class="form-control form-control-sm">
                                     @foreach ($medias as $media)
                                         <option @if ($data['image'] === 'storage/' . $media->media) selected @endif
                                             value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
@@ -53,7 +48,7 @@
 
                             <div class="mt-2">
                                 <label>Content</label>
-                                <textarea  rows="5" placeholder="Content" class="form-control form-control-sm"
+                                <textarea rows="5" placeholder="Content" class="form-control form-control-sm"
                                     name="content">{{ $data['content'] }}</textarea>
                             </div>
                         </div>

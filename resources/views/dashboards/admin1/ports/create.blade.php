@@ -25,27 +25,20 @@
                         </div>
                         <div class="card-body">
                             <form
-                                action="{{ route('content.store', ['type_name' => 'frontend', 'page_name' => 'sliders', 'is_queryset' => 'y']) }}"
+                                action="{{ route('content.store', ['type_name' => 'settings', 'page_name' => 'ports', 'is_queryset' => 'y']) }}"
                                 method="post">
                                 @csrf
                                 <div class="row">
                                     <div>
                                         <label>Title</label>
-                                        <input required placeholder="slider title" class="form-control form-control-sm" type="text"
+                                        <input required placeholder="title" class="form-control form-control-sm" type="text"
                                             name="title">
                                     </div>
-
-                                    <div>
-                                        <label>Classname</label>
-                                        <input placeholder="Classname" class="form-control form-control-sm" type="text"
-                                            name="classname">
-                                    </div>
-
                                     <div class="mt-2">
-                                        <label>Slider Image</label>
+                                        <label>Port Image</label>
                                         <select name="image" class="form-control form-control-sm">
                                             @foreach ($medias as $media)
-                                                <option value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
+                                                <option value="{{ 'storage/'.$media->media }}"> {{ $media->title }} </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -60,7 +53,7 @@
 
                                 <div class="row">
                                     <div class="mt-3">
-                                        <button class="btn btn-block btn-primary " type="submit">Add Slider</button>
+                                        <button class="btn btn-block btn-primary " type="submit">Add</button>
                                     </div>
                                 </div>
 
@@ -69,9 +62,9 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    @include('dashboards.admin1.sliders.table')
+                    @include('dashboards.admin1.services.table')
                 </div>
-
+                
             </div>
         </div>
     </div>

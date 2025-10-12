@@ -13,8 +13,12 @@ class ContentsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($type_name = 'offices', $page_title = "Offices", $page_name, $is_queryset = "n")
-    {
+    public function index(
+        string $page_name,
+        string $page_title,
+        string $type_name,
+        $is_queryset = 'n'
+    ) {
         $context = [];
         $context['page_title'] = $page_title;
         $context['messages'] = session();
@@ -22,60 +26,70 @@ class ContentsController extends Controller
         $media = Media::query()->paginate(3000);
         $context['medias'] = MediaResource::collection($media);
 
-        $obj = Contents::where('type', $type_name)
-            ->where('title', $page_name);
 
 
-        $queryset_check = ['y' => true, 'n' => false];
-        if ($obj) {
-            if (!$queryset_check[$is_queryset]) {
-                if ($obj->first()) {
-                    $context['object'] = json_decode($obj->first()->description);
-                } else {
-                    $context['object'] = [null];
-                }
-            } else {
-                $context['object'] = json_decode($obj->description);
-            }
+        if ($is_queryset === 'y') {
+            // Return all items for this type (queryset mode)
+            $context['objects'] = Contents::where('type', $page_name)
+                ->where('title', $type_name)
+                ->orderByDesc('id')
+                ->get();
         } else {
-            $context['object'] = [null];
+            // Fetch content object or null
+            $obj = Contents::where('type', $page_name)
+                ->where('title', $type_name)
+                ->first();
+            // Return single object
+            $context['object'] = $obj ? json_decode($obj->description) : null;
         }
 
-        return view("dashboards.admin1.$type_name.create", $context);
+        return view("dashboards.admin1.$page_name.create", $context);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $type_name, $page_name)
+    public function store(Request $request, $page_name, $type_name, $is_queryset = 'n')
     {
         // Remove internal fields
         $data = $request->except(['_token', '_method', 'submit']);
 
-        // Store or update one record per type
-        Contents::updateOrCreate(
-            ['type' => $type_name, 'title' => $page_name],
-            ['description' => json_encode($data)]
-        );
+        // Define query mode check
+        $queryset_check = ['y' => true, 'n' => false];
 
+        // If not queryset => updateOrCreate single record
+        if (!$queryset_check[$is_queryset]) {
+            Contents::updateOrCreate(
+                ['type' => $page_name, 'title' => $type_name],
+                ['description' => json_encode($data)]
+            );
+        }
+        // If queryset => create new row every time
+        else {
+            Contents::create([
+                'type' => $page_name,
+                'title' => $type_name,
+                'description' => json_encode($data)
+            ]);
+        }
+
+        // Flash success message
         session()->flash('type', 'success');
-        session()->flash('message', ucfirst($type_name) . " settings updated");
+        session()->flash('message', ucfirst($page_name) . " settings updated");
 
+        // Redirect back to index
         return to_route('content.index', [
             'type_name' => $type_name,
-            'page_title' => ucfirst($type_name) . " " . $page_name,
-            'page_name' => $page_name
+            'page_title' => ucfirst($page_name) . " " . ucfirst($type_name),
+            'page_name' => $page_name,
+            'is_queryset' => $is_queryset
         ]);
     }
-
 
 
     /**
@@ -89,24 +103,67 @@ class ContentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Contents $contents)
-    {
-        //
+    public function edit(
+        Contents $content,
+        string $page_name,
+        string $page_title,
+    ) {
+        $context = [];
+        $context['page_title'] = $page_title;
+
+        $media = Media::query()->paginate(3000);
+        $context['medias'] = MediaResource::collection($media);
+        // return view
+        $pagename = "dashboards.admin1." . $page_name . ".modal.edit";
+        $context['object'] = $content;
+        return view($pagename, $context);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contents $contents)
+    public function update(Request $request, Contents $content, string $page_name, string $type_name)
     {
-        //
+        // Remove internal fields
+        $data = $request->except(['_token', '_method', 'submit']);
+
+        Contents::where('id', $content->id)->update(['description' => json_encode(value: $data)]);
+
+        // Flash success message
+        session()->flash('type', 'success');
+        session()->flash('message', ucfirst($page_name) . " settings updated");
+
+        // Redirect back to index
+        return to_route('content.index', [
+            'type_name' => $type_name,
+            'page_title' => ucfirst($page_name) . " " . ucfirst($type_name),
+            'page_name' => $page_name,
+            'is_queryset' => "y"
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contents $contents)
-    {
-        //
+    public function destroy(
+        Contents $content,
+        string $page_name,
+        string $type_name,
+    ) {
+
+        // Delete the record
+        $content->delete();
+
+        // Flash success message
+        session()->flash('type', 'success');
+        session()->flash('message', ucfirst($page_name) . " record deleted successfully");
+
+        // Redirect back to index
+        return to_route('content.index', [
+            'type_name' => $type_name,
+            'page_title' => ucfirst($page_name) . " " . ucfirst($type_name),
+            'page_name' => $page_name,
+            'is_queryset' => 'y',
+        ]);
     }
 }

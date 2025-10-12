@@ -1,6 +1,8 @@
 
 
 @include("dashboards.admin1.header")
+
+
 @if (session('message'))
 <div class="alert alert-{{ session('type') }} alert-dismissible fade show" role="alert">
     {{ session('message') }}

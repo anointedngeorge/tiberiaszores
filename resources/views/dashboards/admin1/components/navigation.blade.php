@@ -17,23 +17,6 @@ $links = [
         'param' => []
     ],
 
-
-    (object) [
-        "icon" => "flaticon-381-user",
-        "name" => "Blog Post",
-        "has_children" => false,
-        "children" => [
-            (object) [
-                "name" => "hi",
-                "href" => "/",
-                'param' => []
-            ]
-        ],
-        "href" => "blog.index",
-        'param' => []
-    ],
-
-
     (object) [
         "icon" => "flaticon-381-photo-camera",
         "name" => "Media",
@@ -57,12 +40,30 @@ $links = [
             (object) [
                 "name" => "Slider",
                 "href" => "content.index",
-                'param' => ['type_name'=> 'sliders', 'page_title'=>"Sliders Settings", 'page_name'=>"frontend"]
+                'param' => ['type_name'=> 'frontend', 'page_title'=>"Sliders Settings", 'page_name'=>"sliders", 'is_queryset'=>'y']
             ],
             (object) [
                 "name" => "Services",
                 "href" => "content.index",
-                'param' => ['type_name'=> 'services', 'page_title'=>"Services Section", 'page_name'=>"frontend"]
+                'param' => ['type_name'=> 'frontend', 'page_title'=>"Services Section", 'page_name'=>"services", 'is_queryset'=>'y']
+            ],
+
+            (object) [
+                "name" => "Blog/News",
+                "href" => "content.index",
+                'param' => ['type_name'=> 'frontend', 'page_title'=>"Blog News", 'page_name'=>"news", 'is_queryset'=>'y']
+            ],
+
+            (object) [
+                "name" => "Home About",
+                "href" => "content.index",
+                'param' => ['type_name'=> 'frontend', 'page_title'=>"HomePage About us", 'page_name'=>"about1"]
+            ],
+
+            (object) [
+                "name" => "About us",
+                "href" => "content.index",
+                'param' => ['type_name'=> 'frontend', 'page_title'=>"About us", 'page_name'=>"about2"]
             ],
         ],
         "href" => "setting.index",
@@ -76,13 +77,20 @@ $links = [
         "children" => [
             (object) [
                 "name" => "Settings",
-                "href" => "setting.index",
-                'param' => []
+                "href" => "content.index",
+                'param' => ['type_name'=> 'settings', 'page_title'=>"Main Settings", 'page_name'=>"settings"]
             ],
+
             (object) [
                 "name" => "Office",
                 "href" => "content.index",
-                'param' => ['type_name'=> 'offices', 'page_title'=>"Office Settings", 'page_name'=>"settings"]
+                'param' => ['type_name'=> 'frontend', 'page_title'=>"Office Settings", 'page_name'=>"offices"]
+            ],
+
+            (object) [
+                "name" => "Comport Ports",
+                "href" => "content.index",
+                'param' => ['type_name'=> 'frontend', 'page_title'=>"Company Ports", 'page_name'=>"ports", 'is_queryset'=>'y']
             ],
 
         ],

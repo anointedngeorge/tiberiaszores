@@ -1,5 +1,7 @@
 @php
-    $services = [
+    $data = loaddata('services', 'frontend');
+
+    $services = !empty($data) ? $data : [
         (object) [
             'title' => 'Supply chain and logistics',
             'image' => asset('assets/img/services/logistics.jpg'),

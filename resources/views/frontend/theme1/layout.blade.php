@@ -54,7 +54,7 @@
             #sliderImage {
                 height: 700px;
             }
-            
+
         }
 
         /* Large mobile devices (e.g., 600–768px width) */
@@ -88,6 +88,14 @@
     </style>
 </head>
 
+
+@php
+    $data = loadSingleData('offices', 'settings');
+    $settings = loadSingleData('settings', 'settings');
+
+    
+@endphp
+
 <body>
     <!-- Spinner Start -->
     <div id="spinner"
@@ -103,10 +111,10 @@
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <small class="me-3 text-light"><i
-                            class="fa fa-map-marker-alt me-2"></i>{{ config('data.address') }}</small>
+                            class="fa fa-map-marker-alt me-2"></i>{{ $data->address1 ?? config('data.address') }}</small>
                     <small class="me-3 text-light"><i
-                            class="fa fa-phone-alt me-2"></i>{{ config('data.phone1') }}</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>{{ config('data.email') }}
+                            class="fa fa-phone-alt me-2"></i>{{  $data->phone1 ?? config('data.phone1') }}</small>
+                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>{{ $data->email_address1 ?? config('data.email') }}
                     </small>
                 </div>
             </div>
@@ -131,6 +139,7 @@
 
     @yield('content')
 
+
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
@@ -139,12 +148,13 @@
                     <div
                         class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-red p-4">
                         <a href="{{ route('frontend.index') }}" class="navbar-brand">
-                            <img src="{{ asset(config('data.logo')) }}" />   
+                            <img src="{{ asset($settings->logo ?? config('data.logo')) }}" />
                             <h1 class="m-0 text-white">
-                                TiberiasZores</h1>
+                                {{ $settings->sitename ??  "TiberiasZores" }}</h1>
                         </a>
                         <p class="mt-3 mb-4">
-                           {{ config('data.footer_about') }}
+                           
+                            {{ $settings->footer_description ?? config('data.footer_about') }}
                         </p>
                         {{-- <form action="">
                             <div class="input-group">
@@ -162,17 +172,17 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-geo-alt text-red me-2"></i>
-                                <p class="mb-0">{{ config('data.address') }}</p>
+                                <p class="mb-0">{{ $data->address1 ?? config('data.address') }}</p>
                             </div>
-                            
+
 
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-red me-2"></i>
-                                <p class="mb-0">{{ config('data.email') }}</p>
+                                <p class="mb-0">{{  $data->email_address1 ?? config('data.email') }}</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-telephone text-red me-2"></i>
-                                <p class="mb-0">{{ config('data.phone1') }}</p>
+                                <p class="mb-0">{{ $data->phone1 ?? config('data.phone1') }}</p>
                             </div>
                             {{-- <div class="d-flex mt-4">
                                 <a class="btn btn-primary btn-square me-2" href="#"><i
@@ -190,17 +200,17 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-geo-alt text-red me-2"></i>
-                                <p class="mb-0">{{ config('data.address2') }}</p>
+                                <p class="mb-0">{{ $data->address2 ?? config('data.address2') }}</p>
                             </div>
-                            
+
 
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-red me-2"></i>
-                                <p class="mb-0">{{ config('data.email2') }}</p>
+                                <p class="mb-0">{{ $data->email_address2 ?? config('data.email2') }}</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-telephone text-red me-2"></i>
-                                <p class="mb-0">{{ config('data.phone2') }}</p>
+                                <p class="mb-0">{{ $data->phone2 ?? config('data.phone2') }}</p>
                             </div>
                             {{-- <div class="d-flex mt-4">
                                 <a class="btn btn-primary btn-square me-2" href="#"><i
@@ -217,12 +227,12 @@
                                 <h3 class="text-red mb-0">Quick Links</h3>
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
-                                 @foreach ($navigationProvider as $link)
+                                @foreach ($navigationProvider as $link)
                                     <a class="text-light mb-2" href="{{ $link->url ?? '#' }}"><i
-                                        class="bi bi-arrow-right text-red me-2"></i>{{ $link->title }}</a>
-                                 @endforeach
-                                
-                            
+                                            class="bi bi-arrow-right text-red me-2"></i>{{ $link->title }}</a>
+                                @endforeach
+
+
                             </div>
                         </div>
 
@@ -248,7 +258,8 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg bg-red text-white btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg bg-red text-white btn-lg-square rounded back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->

@@ -7,6 +7,7 @@
     @include("dashboards.admin1.modal")
 
 
+
     <div class="content-body">
         <div class="container-fluid">
             <div class="row">
@@ -24,36 +25,36 @@
                             </h4>
                         </div>
                         <div class="card-body">
-                            <form
-                                action="{{ route('content.store', ['type_name' => 'frontend', 'page_name' => 'sliders', 'is_queryset' => 'y']) }}"
-                                method="post">
+                            <form action="{{ route('content.store', ['type_name'=>'sliders', 'page_name'=>'frontend']) }}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div>
                                         <label>Title</label>
-                                        <input required placeholder="slider title" class="form-control form-control-sm" type="text"
-                                            name="title">
+                                        <input value="{{ $object->title ?? '...'}}" placeholder="slider title"
+                                            class="form-control form-control-sm" type="text" name="title">
+                                    </div>
+                                    <div class="mt-2">
+                                        <label>Slider Image</label>
+                                         <select name="image" class="form-control form-control-sm">
+                                        @foreach ($medias as  $media)
+                                            <option value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
+                                        @endforeach
+                                    </select>
                                     </div>
 
-                                    <div>
+                                    <div class="mt-2">
                                         <label>Classname</label>
-                                        <input placeholder="Classname" class="form-control form-control-sm" type="text"
+                                        <input value="{{ $object->classname ?? '' }}"
+                                            placeholder="classname" class="form-control form-control-sm" type="text"
                                             name="classname">
                                     </div>
 
                                     <div class="mt-2">
-                                        <label>Slider Image</label>
-                                        <select name="image" class="form-control form-control-sm">
-                                            @foreach ($medias as $media)
-                                                <option value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="mt-2">
                                         <label>Content</label>
-                                        <textarea rows="5" placeholder="Content" class="form-control form-control-sm"
-                                            name="content"></textarea>
+                                        <textarea 
+                                            rows="5"
+                                            placeholder="Content" class="form-control form-control-sm"
+                                            name="content">{{ $object->content ?? '...' }}</textarea>
                                     </div>
 
                                 </div>
@@ -67,9 +68,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
-                <div class="table-responsive">
-                    @include('dashboards.admin1.sliders.table')
                 </div>
 
             </div>

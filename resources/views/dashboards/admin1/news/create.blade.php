@@ -25,27 +25,25 @@
                         </div>
                         <div class="card-body">
                             <form
-                                action="{{ route('content.store', ['type_name' => 'frontend', 'page_name' => 'sliders', 'is_queryset' => 'y']) }}"
+                                action="{{ route('content.store', ['type_name' => 'frontend', 'page_name' => 'news', 'is_queryset' => 'y']) }}"
                                 method="post">
                                 @csrf
                                 <div class="row">
                                     <div>
                                         <label>Title</label>
-                                        <input required placeholder="slider title" class="form-control form-control-sm" type="text"
+                                        <input placeholder="slider title" class="form-control form-control-sm" type="text"
                                             name="title">
                                     </div>
-
                                     <div>
-                                        <label>Classname</label>
-                                        <input placeholder="Classname" class="form-control form-control-sm" type="text"
-                                            name="classname">
+                                        <label>Location</label>
+                                        <input placeholder="location" class="form-control form-control-sm" type="text"
+                                            name="location">
                                     </div>
-
                                     <div class="mt-2">
-                                        <label>Slider Image</label>
+                                        <label>News Image</label>
                                         <select name="image" class="form-control form-control-sm">
                                             @foreach ($medias as $media)
-                                                <option value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
+                                                <option value="{{ 'storage/'.$media->media }}"> {{ $media->title }} </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -60,7 +58,7 @@
 
                                 <div class="row">
                                     <div class="mt-3">
-                                        <button class="btn btn-block btn-primary " type="submit">Add Slider</button>
+                                        <button class="btn btn-block btn-primary " type="submit">Add News</button>
                                     </div>
                                 </div>
 
@@ -69,9 +67,9 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    @include('dashboards.admin1.sliders.table')
+                    @include('dashboards.admin1.services.table')
                 </div>
-
+                
             </div>
         </div>
     </div>

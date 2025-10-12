@@ -1,9 +1,12 @@
-@php
-    $data = loadSingleData('about2', 'frontend' );
-
-    $content = !empty($data) ? $data : (object) [
-        'content' => '
-            <p class="mb-4">
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-7">
+                <div class="section-title position-relative pb-3 mb-5">
+                    <h5 class="fw-bold text-red text-uppercase">About Us</h5>
+                    <h1 class="mb-0">TiberiasZores Group</h1>
+                </div>
+                <p class="mb-4">
                     TiberiasZores Group is a premiere conglomerate and is the largest corporate organization in Azores
                     of Portugal with huge presence in Central America, East, Central and Southern Africa. TiberiasZores
                     Group comprises Nine companies: TiberiasZores Constructions, TiberiasZores Logistics and Shipping,
@@ -40,28 +43,11 @@
                     tool for self-actualization, industrialization, employment generation, empowerment, wealth creation
                     and sustainability.
                 </p>
-        ',
-        'image' => "assets/img/services/about1.jpeg",
-        'title' => "TiberiasZores Group",
-        'sub_title' => 'About us'
-    ];
-@endphp
-
-
-<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-lg-7">
-                <div class="section-title position-relative pb-3 mb-5">
-                    <h5 class="fw-bold text-red text-uppercase"> {{ $content->sub_title ?? '' }} </h5>
-                    <h1 class="mb-0">{{ $content->title ?? '' }}</h1>
-                </div>
-                {!! $content->content !!}
             </div>
             <div class="col-lg-5" style="min-height: 500px;">
                 <div class="position-relative h-100">
                     <img class="position-absolute w-100 h-100 rounded wow zoomIn " data-wow-delay="0.9s"
-                        src="{{ asset($content->image ?? '') }}" style="object-fit: cover;">
+                        src="{{ asset('assets/img/services/about1.jpeg') }}" style="object-fit: cover;">
                 </div>
             </div>
         </div>
