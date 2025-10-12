@@ -56,7 +56,7 @@
                                     <div class="mt-2">
                                         <label>Footer Description</label>
                                         <textarea rows="5" placeholder="Description" class="form-control form-control-sm"
-                                            name="footer_description"></textarea>
+                                            name="footer_description">{{ $object->footer_description ?? ''}}</textarea>
                                     </div>
 
 
