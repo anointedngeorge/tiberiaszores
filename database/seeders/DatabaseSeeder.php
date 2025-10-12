@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Admininstrator ',
-            'email' => 'admin1@gmail.com',
+            'name' => 'Tiberias Zores ',
+            'email' => 'admin@tiberiaszores.com',
             'password' => 'Password#120!',
             'is_staff'=>true,
             'is_superuser' => true
