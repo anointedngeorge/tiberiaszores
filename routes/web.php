@@ -32,6 +32,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
         Route::get('view/{page_name}/{page_title}/{type_name}/{is_queryset?}', [ContentsController::class, 'index'])->name('content.index');
         Route::get('edit/{content}/{page_name}/{page_title}', [ContentsController::class, 'edit'])->name('content.edit');
         Route::post('store/{page_name}/{type_name}/{is_queryset?}', [ContentsController::class, 'store'])->name('content.store');
+        Route::post('email/{page_name}/{type_name}/{is_queryset?}', [ContentsController::class, 'cPanelEmail'])->name('content.cpanel');
         Route::put('update/{content}/{page_name}/{type_name}', [ContentsController::class, 'update'])->name('content.update');
         Route::delete('delete/{content}/{page_name}/{type_name}', [ContentsController::class, 'destroy'])->name('content.delete');
     });

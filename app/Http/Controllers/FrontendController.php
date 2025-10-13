@@ -9,6 +9,7 @@ use App\Models\Contacts;
 use App\Models\Media;
 use App\Models\Partnership;
 use App\Models\Volunteers;
+use App\Services\CpanelEmailService;
 use Illuminate\Support\Facades\Request;
 use Session;
 use Str;
@@ -17,8 +18,7 @@ use function Pest\Laravel\get;
 
 class FrontendController extends Controller
 {
-    // referralLink
-
+    
     public function index()
     {
 
@@ -39,6 +39,8 @@ class FrontendController extends Controller
                 $data['page_title'] = "Activities";
                 return view("frontend.theme1." . $name, $data);
 
+
+            
             default:
                 $data['page_title'] = "Welcome To " . config('data.name');
                 return view("frontend.theme1.index", $data);

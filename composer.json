@@ -32,7 +32,8 @@
         },
         "files": [
             "utils/functions.php",
-            "app/Helpers/json_helpers.php"
+            "app/Helpers/json_helpers.php",
+            "app/Helpers/email_token_creation.php"
         ]
     },
     "autoload-dev": {

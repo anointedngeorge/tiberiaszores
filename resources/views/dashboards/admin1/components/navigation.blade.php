@@ -93,6 +93,12 @@ $links = [
                 'param' => ['type_name'=> 'frontend', 'page_title'=>"Company Ports", 'page_name'=>"ports", 'is_queryset'=>'y']
             ],
 
+            (object) [
+                "name" => "Staff Email",
+                "href" => "content.index",
+                'param' => ['type_name'=> 'settings', 'page_title'=>"Staff Mailbox", 'page_name'=>"cpanel", 'is_queryset'=>'y']
+            ],
+
         ],
         "href" => null,
         'param' => []
