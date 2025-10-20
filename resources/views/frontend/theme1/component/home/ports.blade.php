@@ -1,6 +1,6 @@
 @php
     $data = loaddata('ports', 'frontend');
-
+    print_r($data);
     $services = !empty($data) ? $data :  [
         (object) [
             'title' => 'Port Gentil',
