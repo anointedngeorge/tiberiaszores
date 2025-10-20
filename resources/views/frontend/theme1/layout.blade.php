@@ -109,13 +109,22 @@
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i
+                    @if ($data->address1)
+                        <small class="me-3 text-light"><i
                             class="fa fa-map-marker-alt me-2"></i>{{ $data->address1 ?? config('data.address') }}</small>
-                    <small class="me-3 text-light"><i
-                            class="fa fa-phone-alt me-2"></i>{{  $data->phone1 ?? config('data.phone1') }}</small>
-                    <small class="text-light"><i
-                            class="fa fa-envelope-open me-2"></i>{{ $data->email_address1 ?? config('data.email') }}
-                    </small>
+                    @endif
+                    
+                    @if ($data->phone1)
+                        <small class="me-3 text-light"><i
+                                class="fa fa-phone-alt me-2"></i>{{  $data->phone1 ?? config('data.phone1') }}</small>
+                    @endif
+
+                    @if ($data->email_address1)
+                        <small class="text-light"><i
+                                class="fa fa-envelope-open me-2"></i>{{ $data->email_address1 ?? config('data.email') }}
+                        </small>
+                    @endif
+
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
