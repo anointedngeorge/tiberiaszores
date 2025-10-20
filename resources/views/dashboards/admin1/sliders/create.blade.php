@@ -31,8 +31,8 @@
                                 <div class="row">
                                     <div>
                                         <label>Title</label>
-                                        <input required placeholder="slider title" class="form-control form-control-sm" type="text"
-                                            name="title">
+                                        <input required placeholder="slider title" class="form-control form-control-sm"
+                                            type="text" name="title">
                                     </div>
 
                                     <div>
@@ -46,6 +46,19 @@
                                         <select name="image" class="form-control form-control-sm">
                                             @foreach ($medias as $media)
                                                 <option value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="mt-2">
+                                        <img src="{{ asset($data['image2']) }}" width="60" height="60"
+                                            style="object-fit:cover; border-radius:8px;">
+                                        <br>
+                                        <label>Slider Image2</label>
+                                        <select required name="image2" class="form-control form-control-sm">
+                                            @foreach ($medias as $media)
+                                                <option @if ($data['image'] === 'storage/' . $media->media) selected @endif
+                                                    value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
                                             @endforeach
                                         </select>
                                     </div>
