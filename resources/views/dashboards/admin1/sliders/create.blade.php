@@ -51,13 +51,16 @@
                                     </div>
 
                                     <div class="mt-2">
-                                        <img src="{{ asset($data['image2']) }}" width="60" height="60"
+                                        @if (isset($data['image2']))
+                                            <img src="{{ asset($data['image2']) }}" width="60" height="60"
                                             style="object-fit:cover; border-radius:8px;">
                                         <br>
+                                        @endif
+                                        
                                         <label>Slider Image2</label>
                                         <select required name="image2" class="form-control form-control-sm">
                                             @foreach ($medias as $media)
-                                                <option @if ($data['image2'] === 'storage/' . $media->media) selected @endif
+                                                <option @if (isset($data['image2']) && $data['image2'] === 'storage/' . $media->media) selected @endif
                                                     value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
                                             @endforeach
                                         </select>
