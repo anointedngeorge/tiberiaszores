@@ -35,9 +35,6 @@
     <div class="carousel-inner">
         @foreach ($sliders as $slider )
 
-            @php
-                print_r($slider->image);
-            @endphp
             <div class="carousel-item {{ $slider->classname }}">
                 <img class="w-100 " id="sliderImage" src="{{ asset($slider->image) }}" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
