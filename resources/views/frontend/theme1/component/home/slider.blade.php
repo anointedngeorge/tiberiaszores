@@ -27,13 +27,19 @@
             'classname' => ''
         ],
     ] ;
+
+
 @endphp
 
 <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
         @foreach ($sliders as $slider )
+
+            @php
+                print_r($slider->image);
+            @endphp
             <div class="carousel-item {{ $slider->classname }}">
-                <img class="w-100 " id="sliderImage" src="{{ $slider->image }}" alt="Image">
+                <img class="w-100 " id="sliderImage" src="{{ asset($slider->image) }}" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
                         <h5 class="text-white text-uppercase mb-3 animated slideInDown">{{ $slider->title }}</h5>
