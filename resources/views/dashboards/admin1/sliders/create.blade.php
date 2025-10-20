@@ -45,7 +45,7 @@
                                         <label>Slider Image</label>
                                         <select name="image" class="form-control form-control-sm">
                                             @foreach ($medias as $media)
-                                                <option value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
+                                                <option value="{{ $media->media }}"> {{ $media->title }} {{ $image->media }} </option>
                                             @endforeach
                                         </select>
                                     </div>
