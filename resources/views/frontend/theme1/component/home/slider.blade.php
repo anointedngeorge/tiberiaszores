@@ -38,8 +38,10 @@
                 <img class="w-100 " id="sliderImage" src="{{ asset($slider->image) }}" alt="{{ $slider->title }}">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
-                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">{{ $slider->title }} 
-                             </h5>
+                        <h2 class="text-white text-uppercase mb-3 animated slideInDown">{{ $slider->title }} 
+                            @if (isset($slider->image2))
+                                <img src="{{ asset($slider->image2) }}" style="width: 50px; height: 50px;">
+                            @endif  </h2>
                         {{-- <p class="display-3 text-white mb-md-4 animated zoomIn" id="sliderParagraph">{{ $slider->content }}</p> --}}
                     </div>
                 </div>
