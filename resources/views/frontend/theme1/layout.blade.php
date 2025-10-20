@@ -21,7 +21,7 @@
     <meta content="{{ $settings->seo_description ?? config('data.footer_about') }}" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset($settings->favicon) ??  asset(config("data.fav")) }}" rel="icon">
+    <link href="{{ asset($settings->favicon) ?? asset(config("data.fav")) }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -113,7 +113,8 @@
                             class="fa fa-map-marker-alt me-2"></i>{{ $data->address1 ?? config('data.address') }}</small>
                     <small class="me-3 text-light"><i
                             class="fa fa-phone-alt me-2"></i>{{  $data->phone1 ?? config('data.phone1') }}</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>{{ $data->email_address1 ?? config('data.email') }}
+                    <small class="text-light"><i
+                            class="fa fa-envelope-open me-2"></i>{{ $data->email_address1 ?? config('data.email') }}
                     </small>
                 </div>
             </div>
@@ -149,10 +150,10 @@
                         <a href="{{ route('frontend.index') }}" class="navbar-brand">
                             <img src="{{ asset($settings->logo ?? config('data.logo')) }}" />
                             <h1 class="m-0 text-white">
-                                {{ $settings->sitename ??  "TiberiasZores" }}</h1>
+                                {{ $settings->sitename ?? "TiberiasZores" }}
+                            </h1>
                         </a>
                         <p class="mt-3 mb-4">
-                           
                             {{ $settings->footer_description ?? config('data.footer_about') }}
                         </p>
                         {{-- <form action="">
@@ -165,61 +166,67 @@
                 </div>
                 <div class="col-lg-8 col-md-6">
                     <div class="row gx-5">
-                        <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                <h3 class="text-red mb-0">AZORES OFFICE</h3>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-geo-alt text-red me-2"></i>
-                                <p class="mb-0">{{ $data->address1 ?? config('data.address') }}</p>
-                            </div>
+
+                        @if ($data->address1)
+                            <div class="col-lg-4 col-md-12 pt-5 mb-5">
+                                <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                    <h3 class="text-red mb-0">AZORES OFFICE</h3>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-geo-alt text-red me-2"></i>
+                                    <p class="mb-0">{{ $data->address1 ?? config('data.address') }}</p>
+                                </div>
 
 
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-envelope-open text-red me-2"></i>
-                                <p class="mb-0">{{  $data->email_address1 ?? config('data.email') }}</p>
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-envelope-open text-red me-2"></i>
+                                    <p class="mb-0">{{  $data->email_address1 ?? config('data.email') }}</p>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-telephone text-red me-2"></i>
+                                    <p class="mb-0">{{ $data->phone1 ?? config('data.phone1') }}</p>
+                                </div>
+                                {{-- <div class="d-flex mt-4">
+                                    <a class="btn btn-primary btn-square me-2" href="#"><i
+                                            class="fab fa-twitter fw-normal"></i></a>
+                                    <a class="btn btn-primary btn-square me-2" href="#"><i
+                                            class="fab fa-facebook-f fw-normal"></i></a>
+                                    <a class="btn btn-primary btn-square me-2" href="#"><i
+                                            class="fab fa-linkedin-in fw-normal"></i></a>
+                                </div> --}}
                             </div>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-telephone text-red me-2"></i>
-                                <p class="mb-0">{{ $data->phone1 ?? config('data.phone1') }}</p>
-                            </div>
-                            {{-- <div class="d-flex mt-4">
-                                <a class="btn btn-primary btn-square me-2" href="#"><i
-                                        class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square me-2" href="#"><i
-                                        class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square me-2" href="#"><i
-                                        class="fab fa-linkedin-in fw-normal"></i></a>
-                            </div> --}}
-                        </div>
+                        @endif
 
-                        <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                <h3 class="text-light mb-0">ITALY OFFICE</h3>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-geo-alt text-red me-2"></i>
-                                <p class="mb-0">{{ $data->address2 ?? config('data.address2') }}</p>
-                            </div>
+                        @if ($data->address2)
+                            <div class="col-lg-4 col-md-12 pt-5 mb-5">
+                                <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                    <h3 class="text-light mb-0">ITALY OFFICE</h3>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-geo-alt text-red me-2"></i>
+                                    <p class="mb-0">{{ $data->address2 ?? config('data.address2') }}</p>
+                                </div>
 
 
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-envelope-open text-red me-2"></i>
-                                <p class="mb-0">{{ $data->email_address2 ?? config('data.email2') }}</p>
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-envelope-open text-red me-2"></i>
+                                    <p class="mb-0">{{ $data->email_address2 ?? config('data.email2') }}</p>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="bi bi-telephone text-red me-2"></i>
+                                    <p class="mb-0">{{ $data->phone2 ?? config('data.phone2') }}</p>
+                                </div>
+                                {{-- <div class="d-flex mt-4">
+                                    <a class="btn btn-primary btn-square me-2" href="#"><i
+                                            class="fab fa-twitter fw-normal"></i></a>
+                                    <a class="btn btn-primary btn-square me-2" href="#"><i
+                                            class="fab fa-facebook-f fw-normal"></i></a>
+                                    <a class="btn btn-primary btn-square me-2" href="#"><i
+                                            class="fab fa-linkedin-in fw-normal"></i></a>
+                                </div> --}}
                             </div>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-telephone text-red me-2"></i>
-                                <p class="mb-0">{{ $data->phone2 ?? config('data.phone2') }}</p>
-                            </div>
-                            {{-- <div class="d-flex mt-4">
-                                <a class="btn btn-primary btn-square me-2" href="#"><i
-                                        class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square me-2" href="#"><i
-                                        class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square me-2" href="#"><i
-                                        class="fab fa-linkedin-in fw-normal"></i></a>
-                            </div> --}}
-                        </div>
+
+                        @endif
 
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
                             <div class="section-title section-title-sm position-relative pb-3 mb-4">
