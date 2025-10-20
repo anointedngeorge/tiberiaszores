@@ -35,7 +35,7 @@ class MediaController extends Controller
     {
         $context = [];
         $context['page_title'] = "Create A New Media";
-       
+
         // return view
         return view('dashboards.admin1.media.modal.create', $context);
     }
@@ -46,16 +46,23 @@ class MediaController extends Controller
     public function store(StoreMediaRequest $request)
     {
         $data = $request->validated();
-        $image = $data['media'] ?? null;
-        // 
-        if ($image) {
-            $data['media'] = $image->store('medias/' . Str::random(), 'public');
+        $images = $request->file('media'); // array of images
+
+        if ($images && is_array($images)) {
+            foreach ($images as $image) {
+                $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $path = $image->store('medias/' . Str::random(), 'public');
+
+                Media::create([
+                    'is_active' => $data['is_active'],
+                    'title' => $originalName,
+                    'media' => $path,
+                ]);
+            }
         }
 
-        Media::create($data);
-
         session()->flash('type', 'success');
-        session()->flash('message', 'Media Created.');
+        session()->flash('message', 'Media files uploaded successfully.');
 
         return to_route('media.index');
     }
@@ -87,14 +94,14 @@ class MediaController extends Controller
     public function update(UpdateMediaRequest $request, Media $medium)
     {
         $data = $request->validated();
-        
+
         $image = $data['media'] ?? null;
-            // 
-            if ($image && $medium->media) {
-        
-                Storage::disk('public')->deleteDirectory(dirname($medium->media));
-                $data['media'] = $image->store('medias/' . Str::random(), 'public');
-            }
+        // 
+        if ($image && $medium->media) {
+
+            Storage::disk('public')->deleteDirectory(dirname($medium->media));
+            $data['media'] = $image->store('medias/' . Str::random(), 'public');
+        }
 
         $medium->update($data);
 

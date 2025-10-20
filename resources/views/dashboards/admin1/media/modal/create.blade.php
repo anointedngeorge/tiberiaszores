@@ -5,7 +5,7 @@
     </div>
 
     <div class="mb-3">
-        <input type="file" name="media" class="form-control input-default ">
+        <input type="file" name="media[]" multiple class="form-control input-default ">
     </div>
 
     <div class="mb-3">

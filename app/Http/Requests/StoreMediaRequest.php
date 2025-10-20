@@ -23,8 +23,9 @@ class StoreMediaRequest extends FormRequest
     {
         return [
             "title" => ['required', 'string', 'max:255'],
-            'media'=> ['required', 'file', 'image', 'mimes:png,jpg,jpeg', 'max:2048'],
-            'is_active'=> ['required','bool']
+            'media' => ['required', 'array'], 
+            'media.*' => ['file', 'image', 'mimes:png,jpg,jpeg,svg,avif,webp', 'max:5048'],
+            'is_active' => ['required', 'bool']
         ];
     }
 }

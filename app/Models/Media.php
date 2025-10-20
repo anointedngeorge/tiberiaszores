@@ -15,9 +15,11 @@ class Media extends Model
      *
      * @var list<string>
      */
+    protected $casts = [
+        'media' => 'array',
+    ];
     protected $fillable = [
         'title',
         'media'
     ];
-
 }
