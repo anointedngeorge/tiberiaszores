@@ -24,7 +24,7 @@
                         </div>
                         <div class="card-body">
                             <form
-                                action="{{ route('content.store', ['type_name' => 'frontend', 'page_name' => 'about1']) }}"
+                                action="{{ route('content.store', ['type_name' => 'frontend', 'page_name' => 'about2']) }}"
                                 method="post">
                                 @csrf
                                 <div class="row">
