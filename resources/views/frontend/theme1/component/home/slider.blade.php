@@ -39,7 +39,7 @@
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
                         <h5 class="text-white text-uppercase mb-3 animated slideInDown">{{ $slider->title }} 
-                            <img src="{{ asset($slider->image2) }}" style="width: 50px; height: 50px;"> </h5>
+                             </h5>
                         {{-- <p class="display-3 text-white mb-md-4 animated zoomIn" id="sliderParagraph">{{ $slider->content }}</p> --}}
                     </div>
                 </div>
