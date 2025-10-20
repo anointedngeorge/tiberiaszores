@@ -45,8 +45,8 @@
                                 <label>Slider Image</label>
                                 <select required name="image" class="form-control form-control-sm">
                                     @foreach ($medias as $media)
-                                        <option @if ($data['image'] === $media->media) selected @endif
-                                            value="{{ $media->media }}"> {{ $media->title }} </option>
+                                        <option @if ($data['image'] === 'storage/' . $media->media) selected @endif
+                                            value="{{ 'storage/' . $media->media }}"> {{ $media->title }} </option>
                                     @endforeach
                                 </select>
                             </div>
