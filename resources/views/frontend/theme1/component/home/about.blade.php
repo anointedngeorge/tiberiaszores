@@ -54,7 +54,7 @@
                     <h1 class="mb-0">{{ $content->title ?? "" }}</h1>
                 </div>
                 
-                {{ Str::limit(strip_tags($content->content), 1500, '...') }}
+                {{ Str::limit(strip_tags($content->content), 3000, '...') }}
 
                 <a href="{{ route('frontend.index', ['q' => 'about']) }}" class="btn bg-red text-white py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Continue
                     Reading...</a>
